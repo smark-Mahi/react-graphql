@@ -152,6 +152,26 @@ body {
         color: rgb(13, 235, 79);
       }
     }
+    .searchContainer{
+      width: 400px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      .search-icon{
+        width: 47px;
+        height: 100%;
+        img{
+          width: 100%;
+          height: 50%;
+          border-radius: 50%;
+        }
+      }
+      .searchInput{
+        width: 100%;
+        height: 100%;
+       
+      }
+    }
   }
 }
 
@@ -225,6 +245,8 @@ body {
   }
 }
 
+
+
 .auth-container {
   width: 100vw;
   min-height: 90vh;
@@ -258,19 +280,24 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 2em;
-
+        /* gap: 2em; */
+     grid-area: 1 / 1 / 2 / 2;
         padding: 0px 5rem;
-
-        transition: all 0.2s ease-in-out 0.7s;
-        z-index: 1;
+        z-index: 2;
+        
+        
+        
       }
     }
     .signIn {
+      
       left: 75%;
+      z-index: 1;
+   
     }
     .signUp {
       left: 25%;
+      z-index: 1;
     }
   }
   .image-container {
@@ -280,6 +307,7 @@ body {
     top: 0px;
     left: 0px;
     grid-template-columns: repeat(2, 1fr);
+    
     .sign-in-image {
       display: flex;
       flex-direction: column;
@@ -290,6 +318,7 @@ body {
       z-index: 7;
       justify-content: space-evenly;
       padding: 3rem 12% 2rem 17%;
+      transition: all 0.2s ease-in-out 0.7s;
 
       div {
         color: rgb(255, 255, 255);
@@ -370,7 +399,7 @@ body {
     );
 
     border-radius: 50%;
-    z-index: -1;
+    z-index: 6;
     transition: all 1.8s ease-in-out 0s;
   }
 }
