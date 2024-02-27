@@ -1,12 +1,25 @@
 import React from "react";
 
-const Button = ({ borderr, setState, changeTo }) => {
+const Button = ({ borderr, setState, changeTo, text }) => {
   return (
-    <input
-      type="submit"
-      className={`custom-button ${borderr}`}
-      onClick={() => setState(changeTo)}
-    />
+    <>
+      {changeTo ? (
+        <button
+          style={{ cursor: "pointer" }}
+          className={`custom-button ${borderr}`}
+          onClick={() => setState(changeTo)}
+        >
+          {text}
+        </button>
+      ) : (
+        <button
+          style={{ cursor: "pointer" }}
+          className={`custom-button ${borderr}`}
+        >
+          {text}
+        </button>
+      )}
+    </>
   );
 };
 

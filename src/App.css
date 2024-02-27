@@ -5,6 +5,24 @@
   padding: 2rem;
   overflow: hidden;
 }
+
+html{
+  scrollbar-width: normal;
+  scrollbar-color: rgb(37, 37, 131);
+}
+
+html::-webkit-scrollbar{
+  width: 10px;
+}
+
+html::-webkit-scrollbar-thumb{
+  background-color: rgb(37, 37, 131);
+}
+
+html::-webkit-scrollbar-track{
+  background-color: white;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -38,7 +56,21 @@ body {
     .next-div {
       display: flex;
       align-items: center;
-      gap: 3em;
+      gap: 2em;
+
+      .avatar{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgb(37, 37, 131);
+        p{
+          color: white;
+          font-size: medium;
+        }
+      }
     }
     p:last-child {
       font-size: 2em;
@@ -214,28 +246,94 @@ body {
   flex-wrap: wrap;
   gap: 10px;
   padding-block: 20px;
+  position: relative;
 }
 
 .card {
-  width: 250px;
-  max-height: 300px;
+  width: 300px;
+height: 200px;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   border: 0.5px solid gray;
   cursor: pointer;
+  border-left: 3px solid rgb(37, 37, 131);
+ position: relative;
+  overflow: auto;
+  scrollbar-width: normal;
+  scrollbar-color: rgb(37, 37, 131);
   &:hover {
     box-shadow: -12px -8px 111px -25px rgba(0, 0, 0, 0.39);
   }
-  padding: 4px;
+  padding: 2px;
   gap: 5px;
-  h1 {
-    font-size: 1.5em;
+  .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    h1 {
+      font-size: 1.2em;
+    }
+    >div{
+      display: flex;
+      align-items: center;
+      gap: .2em;
+      .icons{
+        background: rgb(37, 37, 131);
+        display: flex;
+        width: 30px;
+        height: 30px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        
+        color: black;
+        &:hover{
+          background-color: white;
+          transition: all 0.5s ease;
+        }
+        .icon{
+          font-size: .5em;
+        }
+      }
+    }
   }
   p {
     font-size: 0.8em;
   }
+  
+  &::-webkit-scrollbar{
+    width: 5px;
+    
+  }
+  
+ &::-webkit-scrollbar-thumb{
+    background-color: rgb(37, 37, 131);
+  }
+  
+&::-webkit-scrollbar-track{
+    background-color: white;
+  }
+
+}
+
+.modal-wrapper{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(255, 0, 0, 0.185);
+}
+
+.modal-container{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  max-width: 30rem;
+  transform: translate(-50%,-50%);
+  background: white;
 }
 
 .footer {
@@ -284,6 +382,37 @@ body {
   /* display: flex; */
   position: relative;
   overflow: hidden;
+  .pop-up{
+    position: absolute;
+    color: red;
+    z-index: 8;
+    min-width: 30%;
+    height: 8%;
+    background: white;
+    border-right: 3px solid rgb(37, 37, 131);
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10%;
+    left: 50%;
+    box-shadow: 10px 10px 12px 12px rgba(0,0,0,0.1);
+    opacity: 0;
+   
+   
+    transition: all 2s ease ;
+    p{
+      color: red;
+      padding: 0 8px;
+      letter-spacing: 3px;
+    }
+  }
+  .pop-up.yes{
+ 
+    animation: popUp 2s ease 0.5s ;
+  }
+
+
   .content-container {
     position: absolute;
     width: 100%;
@@ -313,7 +442,7 @@ body {
         /* gap: 2em; */
      grid-area: 1 / 1 / 2 / 2;
         padding: 0px 5rem;
-        z-index: 2;
+        
         
         
         
@@ -348,7 +477,7 @@ body {
       z-index: 7;
       justify-content: space-evenly;
       padding: 3rem 12% 2rem 17%;
- 
+ pointer-events: none;
 
       div {
         color: rgb(255, 255, 255);
@@ -389,6 +518,7 @@ img{
       justify-content: space-evenly;
       padding: 3rem 12% 2rem 17%;
       transition: all 1.1s ease-in-out 0.4s;
+      pointer-events: none;
 
       div {
         color: rgb(255, 255, 255);
@@ -495,6 +625,11 @@ img{
   margin: 10px 0px;
   transition: all 0.5s ease 0s;
   cursor: pointer;
+  pointer-events: all;
+  &:focus{
+    
+    outline: none;
+            }
 }
 
 .btn-border {
@@ -512,5 +647,14 @@ img{
         }
       }
     }
+  }
+}
+
+@keyframes popUp {
+  10%,95%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
   }
 }

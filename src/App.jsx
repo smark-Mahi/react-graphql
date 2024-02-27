@@ -2,14 +2,21 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import { ApolloProvider } from "@apollo/client";
+import { apolloClient } from "./graphql/queries";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/auth" element={<Auth />} />
-      </Routes>
+      <ApolloProvider client={apolloClient}>
+        <Routes>
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/" element={<Home />} />
+          </Route>
+          <Route path="/auth" element={<Auth />} />
+        </Routes>
+      </ApolloProvider>
     </BrowserRouter>
   );
 }

@@ -1,16 +1,31 @@
-import React from "react";
-
-const Card = () => {
+import { GoPencil } from "react-icons/go";
+import { FaTrashAlt } from "react-icons/fa";
+import React, { useState } from "react";
+import UpdateNoteModal from "../Modals/UpdateNoteModal";
+const Card = ({ note }) => {
+  const [showModal, setShowModal] = useState(false);
+  const closeModal = () => setShowModal(!showModal);
   return (
-    <div className="card">
-      <h1>title</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo numquam
-        voluptatum reprehenderit quidem sunt reiciendis laboriosam? Perferendis,
-        repudiandae excepturi quia mollitia error doloremque assumenda quaerat
-        incidunt iure iste corporis veniam?
-      </p>
-    </div>
+    <>
+      <div className="card">
+        <div className="header">
+          <h1>{note.title}</h1>
+          <div>
+            <span className="icons">
+              <GoPencil
+                onClick={() => setShowModal(!showModal)}
+                className="icon"
+              />
+            </span>
+            <span className="icons trash">
+              <FaTrashAlt className="icon" />
+            </span>
+          </div>
+        </div>
+        <p>{note.detail}</p>
+      </div>
+      {showModal && <UpdateNoteModal closeModal={closeModal} />}
+    </>
   );
 };
 
