@@ -25,16 +25,20 @@ const Auth = () => {
     }
     try {
       if (username && password) {
+        setError("please wait! we are logging in");
+        setShowPopUp("yes");
         payload.append("username", username);
         payload.append("password", password);
         const resp = await axios.post(
           "https://ark.iarmours.com/mind-castle-gql/api/auth/login",
           payload
         );
+        setShowPopUp("yes");
         console.log(resp);
-        window.localStorage.setItem("token", resp.data.access_token);
+        localStorage.setItem("token", resp.data.access_token);
         setUserName("");
         setPassword("");
+        setError("");
         navigate("/");
       }
     } catch (error) {

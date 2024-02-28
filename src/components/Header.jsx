@@ -89,7 +89,7 @@ const Header = () => {
               onChange={(e) => setDetail(e.target.value)}
             />
           </div>
-          <input type="submit" />
+          <input type="submit" disabled={!title || !detail} />
         </form>
       </div>
     </div>

@@ -52,3 +52,19 @@ export const ADD_Note = gql`
     }
   }
 `;
+
+export const DELETE_NOTE = gql`
+  mutation deleteNote($id: Int!) {
+    deleteNote(id: $id)
+  }
+`;
+
+export const UPDATE_NOTE = gql`
+  mutation updateNote($id: Int!, $title: String!, $detail: String!) {
+    updateNote(id: $id, title: $title, detail: $detail) {
+      id
+      title
+      detail
+    }
+  }
+`;

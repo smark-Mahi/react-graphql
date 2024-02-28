@@ -5,6 +5,8 @@ import Auth from "./pages/Auth";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from "./graphql/queries";
+import TokenExpiration from "./components/TokenExpiration";
+import { GetStatesGlobally } from "./Hooks/getStatesGlobally";
 
 function App() {
   return (
@@ -12,8 +14,16 @@ function App() {
       <ApolloProvider client={apolloClient}>
         <Routes>
           <Route element={<ProtectedRoutes />}>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={
+                <GetStatesGlobally>
+                  <Home />
+                </GetStatesGlobally>
+              }
+            />
           </Route>
+
           <Route path="/auth" element={<Auth />} />
         </Routes>
       </ApolloProvider>
