@@ -4,6 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_Note, GET_NOTES } from "../graphql/queries";
+
 const Header = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -49,7 +50,9 @@ const Header = () => {
     <div className="header">
       <div>
         <p>
-          SimpleNotes&nbsp;<span>App</span>
+          <Link to="/">
+            SimpleNotes&nbsp;<span>App</span>
+          </Link>
         </p>
         <div className="next-div">
           {userInfo?.username ? (

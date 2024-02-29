@@ -263,21 +263,35 @@ body {
   color: white;
 }
 
+.individual-note{
+  width: 100%;
+  height: 100vh;
+  .note-detail{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p{
+      span{
+        color: rgb(37, 37, 131);
+        font-weight: 800;
+      }
+    }
+  }
+}
+
 .cards {
   width: 100%;
   min-height: max-content;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 10px;
   padding-block: 20px;
   position: relative;
 }
 
 .card {
-  width: 300px;
-height: 200px;
+  min-height: max-content;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
@@ -298,6 +312,7 @@ height: 200px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 8px;
     h1 {
       font-size: 1.2em;
     }
@@ -458,9 +473,7 @@ margin: 0 10px;
     height: 30%;
   }
   .cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+ 
     .card {
       width: 100%;
       height: 100%;

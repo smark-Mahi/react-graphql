@@ -6,6 +6,8 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from "./graphql/queries";
 import { GetStatesGlobally } from "./Hooks/getStatesGlobally";
+import InvidualNote from "./pages/InvidualNote";
+import Layout from "./components/Layout";
 
 function App() {
   return (
@@ -13,16 +15,18 @@ function App() {
       <ApolloProvider client={apolloClient}>
         <Routes>
           <Route element={<ProtectedRoutes />}>
-            <Route
-              path="/"
-              element={
-                <GetStatesGlobally>
-                  <Home />
-                </GetStatesGlobally>
-              }
-            />
+            <Route path="/" element={<Layout />}>
+              <Route
+                index
+                element={
+                  <GetStatesGlobally>
+                    <Home />
+                  </GetStatesGlobally>
+                }
+              />
+              <Route path="notes/:noteId" element={<InvidualNote />} />
+            </Route>
           </Route>
-
           <Route path="/auth" element={<Auth />} />
         </Routes>
       </ApolloProvider>

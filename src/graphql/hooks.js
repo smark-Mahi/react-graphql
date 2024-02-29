@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { GET_NOTES } from "./queries";
+import { GET_NOTES, NOTEByIdQuery } from "./queries";
 
 export function useNotes(q, page) {
   const { data, loading, error } = useQuery(GET_NOTES, {
@@ -11,4 +11,11 @@ export function useNotes(q, page) {
     error: Boolean(error),
     totalPages: data?.notes.totalPages,
   };
+}
+
+export function useNoteById(id) {
+  const { data, loading, error } = useQuery(NOTEByIdQuery, {
+    variables: { id },
+  });
+  return { note: data?.note?.note, loading, error: Boolean(error) };
 }

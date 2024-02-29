@@ -37,6 +37,7 @@ export const GET_NOTES = gql`
         id
         title
         detail
+        createdAt
       }
       totalPages
     }
@@ -65,6 +66,21 @@ export const UPDATE_NOTE = gql`
       id
       title
       detail
+    }
+  }
+`;
+
+export const NOTEByIdQuery = gql`
+  query noteById($id: Int!) {
+    note(id: $id) {
+      note {
+        title
+        detail
+        createdAt
+        owner {
+          username
+        }
+      }
     }
   }
 `;
