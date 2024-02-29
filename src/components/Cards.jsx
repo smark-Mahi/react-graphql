@@ -4,13 +4,29 @@ import { useGlobalContext } from "../Hooks/getStatesGlobally";
 import { useState } from "react";
 
 const Cards = () => {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const { getSearchKey } = useGlobalContext();
 
-  const { notes, loading, error } = useNotes(getSearchKey, 10, page);
+  const { notes, loading, error, totalPages } = useNotes(getSearchKey, page);
 
   if (loading) {
-    return <div style={{ textAlign: "center" }}>Loading...</div>;
+    return (
+      <div className="loader">
+        <div className="pencil-loader">
+          <div className="note-book">
+            <p className="first-line"></p>
+            <p></p>
+            <p></p>
+          </div>
+          <div className="pencil">
+            <div className="eraser-part"></div>
+            <div className="middle-part"></div>
+            <div className="bottom-part"></div>
+          </div>
+          <div className="ground"></div>
+        </div>
+      </div>
+    );
   }
   if (error || notes.length === 0) {
     return (
@@ -19,11 +35,12 @@ const Cards = () => {
   }
 
   const selectPageHandler = (selectedPage) => {
-    if (selectedPage >= 1 && notes.length === 10) {
-      setPage((selectedPage - 1) * 10);
+    console.log(selectedPage, totalPages, "pageno");
+    if (selectedPage >= 1 && selectedPage <= totalPages) {
+      setPage(selectedPage);
     }
   };
-  console.log(getSearchKey, "key");
+  console.log(notes, "key");
   return (
     <div>
       <div className="cards">
@@ -40,7 +57,7 @@ const Cards = () => {
             ◀
           </span>
 
-          {[1, 2, 3].map((_, i) => {
+          {[...new Array(totalPages)].map((_, i) => {
             return (
               <span
                 key={i}
@@ -54,7 +71,7 @@ const Cards = () => {
 
           <span
             onClick={() => selectPageHandler(page + 1)}
-            className={notes.length < 10 ? "" : "pagination__disable"}
+            className={page < totalPages ? "" : "pagination__disable"}
           >
             ▶
           </span>

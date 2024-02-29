@@ -10,6 +10,8 @@ const Card = ({ note }) => {
   const [deleteNote] = useMutation(DELETE_NOTE, {
     variables: { id: note.id },
     refetchQueries: [{ query: GET_NOTES }],
+
+    // refetchQueries: [{ query: GET_NOTES }],
   });
   console.log(getCurrentNote, "noteupdate");
   return (

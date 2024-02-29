@@ -5,7 +5,6 @@ import Auth from "./pages/Auth";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from "./graphql/queries";
-import TokenExpiration from "./components/TokenExpiration";
 import { GetStatesGlobally } from "./Hooks/getStatesGlobally";
 
 function App() {

@@ -297,7 +297,7 @@ height: 200px;
   .header{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     h1 {
       font-size: 1.2em;
     }
@@ -732,6 +732,89 @@ img{
   background: transparent !important;
 }
 
+.loader{
+  text-align: center;
+  width: 100%;
+  height: 400px;
+display: flex;
+justify-content: center;
+align-items: center;
+.pencil-loader{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  .note-book{
+    width: 70px;
+    height: 80px;
+    position: absolute;
+    background: rgb(214, 211, 211);
+    z-index: -1;
+    left: -120%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    gap: 8px;
+    .first-line{
+      width: 50% !important;
+   
+    }
+    p{
+      width: 70%;
+      height: 10px;
+      border-radius: 2px;
+      background: rgba(182, 175, 175, 0.74);
+    }
+  }
+  .pencil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 4;
+    transform: translateY(6%);
+    animation: pencilAnim .5s linear  infinite ;
+   
+    .eraser-part{
+      width: 20px;
+      height: 20px;
+      background-color: palevioletred;
+      border-radius: 52% 56% 0% 0% / 49% 48% 0% 0%  ;
+    }
+    .middle-part{
+      width: 20px;
+      height: 100px;
+      background-color: orange;
+      border-top: 4px solid rgb(37, 37, 131);
+    }
+    .bottom-part{
+      width: 20px;
+      height: 30px;
+      background-color: rgb(224, 200, 169);
+      clip-path: polygon(100% 0, 0 0, 51% 100%);
+      border-bottom: 9px solid black;
+    }
+    
+  }
+}
+  .ground{
+    width: 50px;
+    height: 20px;
+border-radius: 50%;
+    border: 4px dashed gray;
+    position: absolute;
+    bottom: -22px;
+    left: -13px;
+    z-index: 2;
+    opacity: 30%;
+    animation: groundAnim .5s linear infinite ;
+    
+  }
+}
+
 @media (width<=600px) {
   .bgImage {
     div {
@@ -751,5 +834,23 @@ img{
   }
   100%{
     opacity: 0;
+  }
+}
+
+@keyframes groundAnim {
+  10%,50%{
+    opacity: 80%;
+  }
+  50%,100%{
+    opacity: 30%;
+  }
+}
+
+@keyframes pencilAnim {
+  10%,50%{
+    transform: translateY(-5%);
+  }
+  50%,100%{
+    transform: translateY(6%);
   }
 }

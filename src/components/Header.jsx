@@ -21,7 +21,11 @@ const Header = () => {
   const [addNote] = useMutation(ADD_Note, {
     variables: { title, detail },
     update(cache, { data: { addNote } }) {
-      const { notes } = cache.readQuery({ query: GET_NOTES });
+      console.log(cache, addNote, "seeingnotes");
+      const { notes } = cache.readQuery({
+        query: GET_NOTES,
+      });
+     
       cache.writeQuery({
         query: GET_NOTES,
         data: {

@@ -31,14 +31,14 @@ export const apolloClient = new ApolloClient({
 });
 
 export const GET_NOTES = gql`
-  query getNotes($q: String, $limit: Int, $skip: Int) {
-    notes(q: $q, limit: $limit, skip: $skip) {
-      id
-      title
-      detail
-      owner {
-        username
+  query getNotes($q: String, $page: Int) {
+    notes(q: $q, page: $page) {
+      notes {
+        id
+        title
+        detail
       }
+      totalPages
     }
   }
 `;

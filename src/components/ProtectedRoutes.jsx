@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import Auth from "../pages/Auth";
 import { jwtDecode } from "jwt-decode";
 const ProtectedRoutes = () => {
@@ -13,12 +13,7 @@ const ProtectedRoutes = () => {
     }
   }
 
-  // useEffect(() => {
-  //   if (!login) {
-  //     navigate("/auth");
-  //   }
-  // }, [login]);
-  return !login ? <Auth /> : <Outlet />;
+  return !login ? <Navigate to="/auth" /> : <Outlet />;
 };
 
 export default ProtectedRoutes;

@@ -17,6 +17,7 @@ const Auth = () => {
   const [showPopUp, setShowPopUp] = useState("no");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  
   let payload = new FormData();
   async function signInHandler(e) {
     e.preventDefault();
@@ -25,23 +26,22 @@ const Auth = () => {
     }
     try {
       if (username && password) {
-        setError("please wait! we are logging in");
-        setShowPopUp("yes");
         payload.append("username", username);
         payload.append("password", password);
+        setError("please wait! we are logging in");
+        setShowPopUp("yes");
         const resp = await axios.post(
           "https://ark.iarmours.com/mind-castle-gql/api/auth/login",
           payload
         );
-        setShowPopUp("yes");
         console.log(resp);
         localStorage.setItem("token", resp.data.access_token);
         setUserName("");
         setPassword("");
-        setError("");
         navigate("/");
       }
     } catch (error) {
+      setError("");
       console.log(error);
       setError(error.response.data.detail);
       setShowPopUp("yes");
