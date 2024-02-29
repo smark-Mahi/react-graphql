@@ -8,7 +8,6 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const userInfo = jwtDecode(localStorage.getItem("token")) || "";
-  console.log(userInfo);
 
   function logoutHandler() {
     localStorage.removeItem("token");
@@ -21,11 +20,10 @@ const Header = () => {
   const [addNote] = useMutation(ADD_Note, {
     variables: { title, detail },
     update(cache, { data: { addNote } }) {
-      console.log(cache, addNote, "seeingnotes");
       const { notes } = cache.readQuery({
         query: GET_NOTES,
       });
-     
+
       cache.writeQuery({
         query: GET_NOTES,
         data: {

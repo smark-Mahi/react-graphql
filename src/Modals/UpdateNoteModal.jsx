@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
 import ReactDOM from "react-dom";
-import { GET_NOTES, UPDATE_NOTE } from "../graphql/queries";
+import { UPDATE_NOTE } from "../graphql/queries";
 const UpdateNoteModal = ({ closeModal, currentData, setGetCurrentNote }) => {
   const { id, title, detail } = currentData;
   console.log(currentData, "updateddddddddd");
