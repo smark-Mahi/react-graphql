@@ -21,7 +21,7 @@ const Auth = () => {
   let payload = new FormData();
   async function signInHandler(e) {
     e.preventDefault();
-    if (!username && !password) {
+    if (!username || !password) {
       setShowPopUp("yes");
     }
     try {
@@ -50,7 +50,7 @@ const Auth = () => {
 
   async function signUpHandler(e) {
     e.preventDefault();
-    if (!username && !password && !email && !confirmPassword) {
+    if (!username || !password || !email || !confirmPassword) {
       setShowPopUp("yes");
     }
     const resp = await axios.post(
@@ -82,7 +82,13 @@ const Auth = () => {
       className={`auth-container ${state === "signIn" ? "signIn" : "signUp"}`}
     >
       <div className={`pop-up ${showPopUp}`}>
-        <p>{error || "All feilds are mandatory "}</p>
+        <p>
+          {error
+            ? error
+            : !username || !password || !email || !confirmPassword
+            ? "All feilds are mandatory "
+            : "Network Error"}
+        </p>
       </div>
       <div className={`content-container `}>
         <div className={`${state === "signIn" ? "signIn" : "signUp"}`}>

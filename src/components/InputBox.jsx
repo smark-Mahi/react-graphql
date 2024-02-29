@@ -4,7 +4,7 @@ const InputBox = ({ icon, type, val, setVal }) => {
       <div className="input-icon">{icon}</div>
       <div className="input-box-container">
         <input
-          type="text"
+          type={type === "Password" ? "password" : "text"}
           placeholder={type}
           value={val}
           onChange={(e) => setVal(e.target.value)}
