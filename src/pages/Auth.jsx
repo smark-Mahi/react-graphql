@@ -31,7 +31,7 @@ const Auth = () => {
         setError("please wait! we are logging in");
         setShowPopUp("yes");
         const resp = await axios.post(
-          "https://ark.iarmours.com/mind-castle-gql/api/auth/login",
+          "https://mind-castle-gql-server.csproject.org/api/auth/login",
           payload
         );
         console.log(resp);
@@ -54,7 +54,7 @@ const Auth = () => {
       setShowPopUp("yes");
     }
     const resp = await axios.post(
-      "https://ark.iarmours.com/mind-castle-gql/api/auth/signup",
+      "https://mind-castle-gql-server.csproject.org/api/auth/signup",
       {
         username,
         email,

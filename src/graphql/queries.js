@@ -8,7 +8,7 @@ import {
 } from "@apollo/client";
 
 const httpLink = new createHttpLink({
-  uri: "https://ark.iarmours.com/mind-castle-gql/graphql/notes",
+  uri: "https://mind-castle-gql-server.csproject.org/graphql/notes",
 });
 
 export function getAccessToken() {

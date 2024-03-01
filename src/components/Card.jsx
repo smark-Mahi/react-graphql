@@ -13,7 +13,7 @@ const Card = ({ note }) => {
   const closeModal = () => setGetCurrentNote(null);
   const [deleteNote] = useMutation(DELETE_NOTE, {
     variables: { id: note.id },
-    refetchQueries: [{ query: GET_NOTES }],
+    refetchQueries: [GET_NOTES, "getNotes"],
   });
 
   return (

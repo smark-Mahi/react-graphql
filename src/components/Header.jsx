@@ -20,18 +20,20 @@ const Header = () => {
 
   const [addNote] = useMutation(ADD_Note, {
     variables: { title, detail },
-    update(cache, { data: { addNote } }) {
-      const { notes } = cache.readQuery({
-        query: GET_NOTES,
-      });
-
-      cache.writeQuery({
-        query: GET_NOTES,
-        data: {
-          notes: [...notes, addNote],
-        },
-      });
-    },
+    refetchQueries: [GET_NOTES, "getNotes"],
+    // update(cache, { data: { addNote } }) {
+    //   console.log(cache.data.data, "cache", cache);
+    //   const { notes } = cache.readQuery({
+    //     query: GET_NOTES,
+    //   });
+    //   console.log("query", notes, addNote);
+    //   cache.writeQuery({
+    //     query: GET_NOTES,
+    //     data: {
+    //       notes: [...notes, addNote],
+    //     },
+    //   });
+    // },
   });
 
   function saveNoteHandler(e) {
