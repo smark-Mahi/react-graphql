@@ -31,9 +31,9 @@ const HeroSection = () => {
     <div className="bgImage">
       <img src={noesbackground} alt="noesbackground" />
       <div>
-        <h1>Simple Notes App</h1>
+        <h1>Notes Management</h1>
         <p>
-          Save, Secure And <span>Easy.</span>
+          Secure, Simple And <span>Effortless.</span>
         </p>
         <div className="searchContainer">
           <div className="search-icon">

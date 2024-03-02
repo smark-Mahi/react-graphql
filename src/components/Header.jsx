@@ -52,9 +52,7 @@ const Header = () => {
     <div className="header">
       <div>
         <p>
-          <Link to="/">
-            SimpleNotes&nbsp;<span>App</span>
-          </Link>
+          <Link to="/">𝔪𝔦𝔫𝔡 𝔠𝔞𝔰𝔱𝔩𝔢&nbsp;</Link>
         </p>
         <div className="next-div">
           {userInfo?.username ? (
