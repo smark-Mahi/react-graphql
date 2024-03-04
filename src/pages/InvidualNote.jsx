@@ -29,7 +29,9 @@ const InvidualNote = () => {
   }
   if (error) {
     return (
-      <div style={{ textAlign: "center", color: "red" }}>Data unavailable</div>
+      <div style={{ textAlign: "center", color: "red", height: "400px" }}>
+        Data unavailable
+      </div>
     );
   }
 
